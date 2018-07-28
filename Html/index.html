@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 550px ;
+            height: 34px;
+            margin: 0 auto;
+            padding-top: 250px;
+        }
+        #kw {
+            display: block;
+            width: 400px;
+            height: 30px;
+            float: left;
+            color: grey;
+        }
+
+        #btn {
+            display: block;
+            width: 100px;
+            height: 34px;
+            float:left;
+            /*cursor: pointer;*/
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" value="请输入内容" id="kw">
+        <input type="button" value="百度一下" id="btn">
+    </div>
+    <script>
+        var input = document.getElementById("kw");
+        input.onfocus = function () {
+            if(this.value === "请输入内容"){
+                this.value="";
+                this.style.color="black";
+            }
+        }
+
+        input.onblur = function () {
+            if (this.value.length === 0) {
+                this.value="请输入内容";
+                this.style.color="grey";
+            }
+
+        }
+    </script>
+
+</body>
+</html>
