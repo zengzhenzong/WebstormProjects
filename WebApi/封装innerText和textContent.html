@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 50px;
+            border: solid red 1px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button"  value="点击按钮" id="btn">
+    <div id="div">
+
+    </div>
+    //设置标签中文本内容，应该使用textContent属性，谷歌、火狐支持，IE8不支持。低版本的火狐不支持innerText属性。
+    <script>
+        //封装函数：获取标签文本值
+        function getText(element) {
+            if (element.textContent == undefined){
+                return element.innerText;
+            }
+            else {
+                return element.textContent;
+            }
+        }
+        //封装函数：设置标签文本值
+        function setText(element,text){
+            if (element.textContent == undefined) {
+                element.innerText = text;
+            }
+
+            else {
+                element.textContent = text;
+            }
+        }
+    </script>
+    <script>
+        var obj1= document.getElementById("btn");
+        var obj2 = document.getElementById("div");
+        obj1.onclick = function(){
+            setText(obj2,"这是一个div");
+            console.log(getText(obj2));
+        }
+
+    </script>
+
+</body>
+</html>
