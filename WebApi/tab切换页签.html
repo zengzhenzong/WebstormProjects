@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #box{
+            width: 300px;
+            height: 250px;
+            margin: 0 auto;
+            margin-top: 200px;
+            border: 1px solid grey;
+        }
+        #tab li{
+            width: 75px;
+            height: 50px;
+            float: left;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;
+
+        }
+        #tab .current{
+            background-color: cornflowerblue;
+        }
+        #tab_body .current{
+            background-color: pink;
+            display: block;
+        }
+        #tab_body li{
+            width: 300px;
+            height: 200px;
+            float: left;
+            display: none;
+            line-height: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="hd_box">
+            <ul id="tab">
+                <li class="current">体育</li>
+                <li>新闻</li>
+                <li>图片</li>
+                <li>影视</li>
+            </ul>
+        </div>
+        <div id="bd_box">
+            <ul id="tab_body">
+                <li >新浪体育提供最快速最全面最专业的体育新闻和赛事报道,主要有以下栏目:中国足球、国际足球、
+                    篮球、NBA、综合体育、奥运、F1、网球、高尔夫、棋牌、彩票、视频、图片、..</li>
+                <li class="current">新浪网新闻中心是新浪网最重要的频道之一,24小时滚动报道国内、国际及社会新闻。每日编发新闻数以万计。</li>
+                <li>这里有电脑风景图片大全,图片均为高清原创正版授权,价格低廉,品质保证.丰富的风景大图片,轻松找到您需要的素材
+                    ,购买即可永久商用,是您的不二选择</li>
+                <li>2018精美原创高清 视频素材,炫酷动态效果,震撼视觉体验,超多视频模板免费下载!AE模板/片头视频素材,高清
+                    视频素材 一键免费下载,每日更新!全覆盖,</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var tabs=document.getElementById("tab").getElementsByTagName("li");
+
+        var tabs_body =document.getElementById("tab_body").getElementsByTagName("li");
+        for (var i=0;i<tabs.length;i++){
+            tabs[i].onclick = function () {
+                for (var j=0;j<tabs.length;j++){
+                    //点击的时候，把索引值保存在tab页签当中。
+                    tabs[j].setAttribute("index",j);
+                    //第一件事,所有的tab页签类样式移除
+                    tabs[j].removeAttribute("class");
+                    tabs_body[j].removeAttribute("class");
+                }
+                //第二件事，当前被点击的tab页签应用类样式
+                this.setAttribute("class","current");
+                var num = this.getAttribute("index");
+                tabs_body[num].setAttribute("class","current");
+            }
+        }
+    </script>
+
+</body>
+</html>
