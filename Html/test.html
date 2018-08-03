@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <tr></tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
+
 </head>
 <body>
-
+    <ul id="uu">aaa
+        <li class="1">1111</li>bbb
+    </ul>
+    <script>
+        var obj = document.getElementById("uu");
+        var objs=obj.childNodes;
+        for (var i=0;i<objs.length;i++){
+            if(objs[i].nodeType==1 && objs[i].nodeName=="LI"){
+                console.log(objs[i]);
+            }
+        }
+        console.log(objs);
+    </script>
 </body>
 </html>
