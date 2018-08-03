@@ -9,6 +9,9 @@
             margin-top: 100px;
 
         }
+        thead td{
+            background-color: bisque;
+        }
         td{
             text-align: center;
         }
@@ -16,27 +19,57 @@
 </head>
 <body>
     <table border="1" cellpadding="0" cellspacing="0" align="center">
-        <tr>
-            <td><input type="checkbox"></td>
-            <td>菜单</td>
-            <td>价格</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td>红烧茄子</td>
-            <td>15</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td>西红柿炒蛋</td>
-            <td>12</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td>清蒸鲈鱼</td>
-            <td>25</td>
-        </tr>
+        <thead>
+            <tr>
+                <td><input type="checkbox" id="checkAll"></td>
+                <td>菜单</td>
+                <td>价格</td>
+            </tr>
+        </thead>
+        <tbody id="tb">
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>红烧茄子</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>西红柿炒蛋</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>清蒸鲈鱼</td>
+                <td>25</td>
+            </tr>
+        </tbody>
+
     </table>
+    <script>
+        var checkAll =document.getElementById("checkAll");
+        var allInput = document.getElementById("tb").getElementsByTagName("input");
+        //让全选按钮的checked值等于其他input的checked值。
+        checkAll.onclick = function () {
+            for(var i=0;i<allInput.length;i++){
+                allInput[i].checked=this.checked;
+            }
+        }
+
+        //每次点击子input按钮，遍历所有input的状态，返回flag值。
+        for(var i=0;i<allInput.length;i++){
+            allInput[i].onclick =function () {
+                var flag = true;
+                for(var j=0;j<allInput.length;j++){
+                    if(allInput[j].checked==false){
+                        flag=false;
+                        break;
+                    }
+                }
+                checkAll.checked=flag;
+
+            }
+        }
+    </script>
 
 </body>
 </html>
